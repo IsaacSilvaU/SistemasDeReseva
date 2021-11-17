@@ -27,11 +27,6 @@ export const Formulario = () => {
   const backgroundColor = useColorModeValue("blue.200", "blue.700");
   const backgroundColor2 = useColorModeValue("blue.300", "blue.800");
 
-  const captura = () => {
-    const user = document.getElementById("nombre").getValue();
-    localStorage.setItem("memoria", user);
-    console.log(user);
-  };
 
   return (
     <Container maxW="container.xl">
@@ -83,7 +78,7 @@ export const Formulario = () => {
             type="text"
             autoComplete="off"
           />
-          <Button colorScheme="blue" onClick={captura()}>
+          <Button colorScheme="blue">
             Registrar
           </Button>
         </Box>
