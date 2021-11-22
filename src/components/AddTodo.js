@@ -55,6 +55,7 @@ export function AddTodo({ addTodo }) {
   const [content, setContent] = useState("");
   const [content2, setContent2] = useState("");
   const [usuario, contentus] = useState("");
+  console.log(usuario);
   /////////////////////////////////////////////////////////////
   const [errorMessage, setErrorMessage] = useState("");
   const { user, setUser } =
