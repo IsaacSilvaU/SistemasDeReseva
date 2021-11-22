@@ -14,7 +14,7 @@ export const ProtectedRoute = ({ children, ...rest }) => {
         ) : (
           <Redirect
             to={{ pathname: "/", state: location }}
-          /> /* El usuario iuntenta entrar a una pagina pero no está logueado y si se loguea el location permitirá retornar a la página que quería acceder */
+          /> /* El usuario intenta entrar a una pagina pero no está logueado y si se loguea el location permitirá retornar a la página que quería acceder */
         );
       }}
     />

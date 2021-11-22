@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Heading,
   HStack,
   VStack,
   Text,
@@ -14,9 +13,9 @@ import { FaTrash } from "react-icons/fa";
 export function TodoList({ todos, deleteTodo }) {
   if (!todos.length) {
     return (
-      <Badge colorScheme="green" p="4" m="4" borderRadius="lg">
-        No hay nada
-      </Badge>
+        <Badge colorScheme="green" p="4" m="4" borderRadius="lg">
+          No hay nada
+        </Badge>
     );
   }
   return (

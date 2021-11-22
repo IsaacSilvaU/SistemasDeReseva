@@ -1,32 +1,42 @@
 import { Button } from "@chakra-ui/button";
 import { Input } from "@chakra-ui/input";
 import { useToast } from "@chakra-ui/react";
-import { HStack, Spacer } from "@chakra-ui/layout";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import {
+  ListItem,
+  UnorderedList,
   Heading,
   FormControl,
-  FormLabel,
   VStack,
   Box,
   Flex,
   useColorModeValue,
+  Container,
+  Checkbox,
+  Center,
 } from "@chakra-ui/react";
+import { React } from "react";
+import { Link } from "react-router-dom";
+
+/* var us = localStorage.getItem("todos"); */
+var us = localStorage.getItem("usuario");
+console.log(us);
 
 export function AddForm({ addTodo }) {
+
   const backgroundColor = useColorModeValue("gray.300", "gray.700");
+  const backgroundColor2 = useColorModeValue("blue.300", "blue.800");
 
   const toast = useToast();
 
-  function handleSubmit(e, f) {
+  function handleSubmit(e) {
     e.preventDefault();
     /* console.log("123"); */
-    console.log(content);
-    console.log(content2);
+    console.log(content, content2, content3, content4);
     console.log("hola");
 
-    if (!content && !content2) {
+    if (!content && !content2 & !content3 & !content4) {
       toast({
         title: "No hay contenido",
         status: "error",
@@ -36,59 +46,248 @@ export function AddForm({ addTodo }) {
       return;
     }
 
-    const todo = {
+    let todo = {
       id: nanoid(),
-      body: [content, content2],
+      body: [
+        content,
+        content2,
+        content3,
+        content4,
+        checked,
+        checked2,
+        checked3,
+        checked4,
+        checked5,
+        checked6,
+        checked7,
+        checked8,
+      ],
     };
     console.log(todo);
     addTodo(todo);
     setContent("");
     setContent2("");
+    setContent3("");
+    setContent4("");
   }
+
+  const [checked, setChecked] = useState(true);
+  const toggleChecked = () => setChecked((value) => !value);
+
+  const [checked2, setChecked2] = useState(false);
+  const toggleChecked2 = () => setChecked2((value) => !value);
+
+  const [checked3, setChecked3] = useState(false);
+  const toggleChecked3 = () => setChecked3((value) => !value);
+
+  const [checked4, setChecked4] = useState(false);
+  const toggleChecked4 = () => setChecked4((value) => !value);
+
+  const [checked5, setChecked5] = useState(false);
+  const toggleChecked5 = () => setChecked5((value) => !value);
+
+  const [checked6, setChecked6] = useState(true);
+  const toggleChecked6 = () => setChecked6((value) => !value);
+
+  const [checked7, setChecked7] = useState(false);
+  const toggleChecked7 = () => setChecked7((value) => !value);
+
+  const [checked8, setChecked8] = useState(false);
+  const toggleChecked8 = () => setChecked8((value) => !value);
 
   const [content, setContent] = useState("");
   const [content2, setContent2] = useState("");
+  const [content3, setContent3] = useState("");
+  const [content4, setContent4] = useState("");
+
+  console.log(
+    checked,
+    checked2,
+    checked3,
+    checked4,
+    checked5,
+    checked6,
+    checked7,
+    checked8
+  );
+
+  if (checked === true) {
+    let c1 = "true";
+    console.log("valor c: ", c1);
+  } else {
+    let c1 = "false";
+    console.log("valor c: ", c1);
+  }
 
   return (
-    <Flex height="70vh" justifyContent="center" alignItems="center">
-      <Box maxW="50vw" bg={backgroundColor} p={6} borderRadius="md">
-        <VStack p={4}>
-          <Heading>Login</Heading>
-        </VStack>
-        <form onSubmit={handleSubmit}>
-          <FormControl
-            id="username"
-            spacing="10"
-            variant="outline"
-            justify="center"
-          >
-            <VStack mt="8" spacing="5" variant="outline" justify="center">
-              <FormLabel>Nombre de usuario</FormLabel>
-              <Input
-                name="username"
-                variant="filled"
-                placeholder="Username"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
+    <Container maxW="container.xl">
+      <Center color="white" height="20vh">
+        <Heading size="lg" mb={3} margin-left="100px" marginBottom="7">
+          Bienvenido {localStorage.getItem("usuario")}
+        </Heading>
+      </Center>
+      <Flex height="10vh" justifyContent="center" alignItems="center"></Flex>
+      <Flex height="55vh" justifyContent="center" alignItems="center">
+        <Box maxW="50vw" bg={backgroundColor} p={6} borderRadius="md">
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <VStack mt="8" spacing="5" variant="outline" justify="center">
+                <Heading size="lg" mb={3}>
+                  Nombre
+                </Heading>
+                <Input
+                  placeholder="Nombre"
+                  variant="filled"
+                  mb={3}
+                  type="text"
+                  autoComplete="off"
+                  id="nombre"
+                  value={content}
+                  onChange={(nom) => setContent(nom.target.value)}
+                />
+                <Heading size="lg" mb={3}>
+                  Apellidos
+                </Heading>
+                <Input
+                  placeholder="Apellidos"
+                  variant="filled"
+                  mb={3}
+                  type="text"
+                  autoComplete="off"
+                  value={content2}
+                  onChange={(ape) => setContent2(ape.target.value)}
+                />
+                <Heading size="lg" mb={3}>
+                  Número de contacto
+                </Heading>
+                <Input
+                  placeholder="#"
+                  variant="filled"
+                  mb={3}
+                  type="text"
+                  autoComplete="off"
+                  value={content3}
+                  onChange={(num) => setContent3(num.target.value)}
+                />
+                <Heading size="lg" mb={3}>
+                  Correo electrónico
+                </Heading>
+                <Input
+                  placeholder="@"
+                  variant="filled"
+                  mb={3}
+                  type="text"
+                  autoComplete="off"
+                  value={content4}
+                  onChange={(email) => setContent4(email.target.value)}
+                />
+              </VStack>
+            </FormControl>
+          </form>
+        </Box>
 
-              <FormLabel>Contraseña</FormLabel>
-              <Input
-                name="password"
-                variant="filled"
-                placeholder="Password"
-                value={content2}
-                onChange={(f) => setContent2(f.target.value)}
-              />
+        <Box maxW="100vh" bg={backgroundColor2} p={6} borderRadius="md">
+          <form onSubmit={handleSubmit}>
+            <Heading size="lg" mb={3}>
+              Tipo de Habitación
+            </Heading>
+            <UnorderedList spacing={3}>
+              <ListItem>
+                <Checkbox
+                  defaultIsChecked
+                  checked={checked}
+                  onChange={toggleChecked}
+                >
+                  Habitación Individual
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked2}
+                  onChange={toggleChecked2}
+                >
+                  Habitación Doble
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked3}
+                  onChange={toggleChecked3}
+                >
+                  Habitación Triple
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked4}
+                  onChange={toggleChecked4}
+                >
+                  Habitación Cuádruple
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked5}
+                  onChange={toggleChecked5}
+                >
+                  Suite
+                </Checkbox>
+              </ListItem>
+            </UnorderedList>
 
-              <Button colorScheme="blue" px="2" type="submit">
-                Iniciar Sesión
-              </Button>
-            </VStack>
-          </FormControl>
-        </form>
-      </Box>
-    </Flex>
+            <Heading size="lg" mb={3} marginTop="5">
+              Servicio de alimentación
+            </Heading>
+            <UnorderedList spacing={3}>
+              <ListItem>
+                <Checkbox
+                  defaultIsChecked
+                  checked={checked6}
+                  onChange={toggleChecked6}
+                >
+                  Desayuno
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked7}
+                  onChange={toggleChecked7}
+                >
+                  Almuerzo
+                </Checkbox>
+              </ListItem>
+              <ListItem>
+                <Checkbox
+                  defaultIsUnchecked
+                  checked={checked8}
+                  onChange={toggleChecked8}
+                >
+                  Cena
+                </Checkbox>
+              </ListItem>
+            </UnorderedList>
+            <Button
+              margin="2"
+              colorScheme="blue"
+              variant="outline"
+              justify="center"
+              marginRight="60%"
+              onClick="regresar"
+            >
+              <Link to="/inicio">Cancelar</Link>
+            </Button>
+            <Button margin="2" colorScheme="blue" px="2" type="submit">
+              Registrar
+            </Button>
+          </form>
+        </Box>
+      </Flex>
+    </Container>
   );
 }
 

@@ -3,19 +3,18 @@ import "./index.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Inicio } from "./components/inicio";
 import { Login } from "./components/login";
-import { Login2 } from "./components/login2";
-import { Login3 } from "./components/Login3";
+import { ListaDatos } from "./components/ListaDatos";
 import { Formulario } from "./components/formulario";
-import { Formulario2 } from "./components/formulario2";
 import {
   Box,
   Flex,
   HStack,
+  Image,
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
 
-function App() {
+function App( user, ProfileImage ) {
   return (
     <Router>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -26,11 +25,20 @@ function App() {
               <Link to="/inicio">Inicio</Link>
             </Box>
             <Box>
-              <Link to="/login2">Login</Link>
+              <Link to="/login">Login</Link>
             </Box>
             <Box>
-              <Link to="/formulario2">Formulario</Link>
+              <Link to="/formulario">Formulario</Link>
             </Box>
+            <Image
+              borderRadius="full"
+              boxSize="45px"
+              src={localStorage.getItem("UsImg")}
+              alt="Profile Image"
+              justify="right"
+              left="100px"
+            />
+            {user.name && <ProfileImage />}
             <HStack
               as={"nav"}
               spacing={4}
@@ -41,20 +49,17 @@ function App() {
       </Box>
       <Switch>
         <Route path={"/inicio"}>
-          <Inicio />
+          <App />
         </Route>
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/login2">
-          <Login2 />
-        </Route>
-        <Route path="/formulario2">
+        <Route path="/formulario">
           <Formulario />
         </Route>
-        {/*           <Route path="/">
-                <Home />
-              </Route> */}
+        <Route path="/">
+          <App />
+        </Route>
       </Switch>
     </Router>
   );
