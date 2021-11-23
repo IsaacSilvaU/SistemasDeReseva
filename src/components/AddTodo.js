@@ -55,7 +55,7 @@ export function AddTodo({ addTodo }) {
   const [content, setContent] = useState("");
   const [content2, setContent2] = useState("");
   const [usuario, contentus] = useState("");
-  console.log.apply(usuario);
+  console.log(usuario);
   /////////////////////////////////////////////////////////////
   const [errorMessage, setErrorMessage] = useState("");
   const { user, setUser } =
@@ -161,6 +161,7 @@ export function AddTodo({ addTodo }) {
                       type="submit"
                     >
                       Iniciar sesión con Google
+                      <a href="/formulario"></a>
                     </Button>
                     {errorMessage && (
                       <div className="error">{errorMessage}</div>
@@ -176,7 +177,7 @@ export function AddTodo({ addTodo }) {
               <Route patch="/">
                 <section className="container"></section>
               </Route>
-{/*               <ProtectedRoute to="./formulario2">
+              {/*               <ProtectedRoute to="./formulario2">
                 <section className="container">
                   <div>Cusos de: {user?.name}</div>
                   <Link to="/formulario">Formulario</Link>

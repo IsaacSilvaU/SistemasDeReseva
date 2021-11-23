@@ -33,7 +33,6 @@ export function AddForm({ addTodo }) {
   function handleSubmit(e) {
     e.preventDefault();
     /* console.log("123"); */
-    console.log(content, content2, content3, content4);
     console.log("hola");
 
     if (!content && !content2 & !content3 & !content4) {

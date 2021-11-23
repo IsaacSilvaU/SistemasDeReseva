@@ -23,7 +23,7 @@ export const MainMenu = () => {
     <nav className="main-menu">
       <ul>
         <li>
-          <Link to="/blog">Blog</Link>
+          <Link to="/formulario">Formulario</Link>
         </li>
         {user.name &&( /* Solo mostrará el Cerrar Sesion y mis cursos si la persona está logueada */
         <>
@@ -31,7 +31,7 @@ export const MainMenu = () => {
           <Link to="/my_courses">Mis Cursos</Link>
         </li>
         <li>
-          <a href="#" onClick={handleSingOut}>
+          <a href="inicio" onClick={handleSingOut}>
             Cerrar sesión
           </a>
         </li>
