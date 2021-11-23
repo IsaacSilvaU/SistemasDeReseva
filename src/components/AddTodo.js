@@ -12,7 +12,7 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Import the functions you need from the SDKs you ne
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
