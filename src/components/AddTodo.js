@@ -12,7 +12,7 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Import the functions you need from the SDKs you ne
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
@@ -161,6 +161,7 @@ export function AddTodo({ addTodo }) {
                       type="submit"
                     >
                       Iniciar sesión con Google
+                      <a href="/formulario"></a>
                     </Button>
                     {errorMessage && (
                       <div className="error">{errorMessage}</div>
@@ -176,7 +177,7 @@ export function AddTodo({ addTodo }) {
               <Route patch="/">
                 <section className="container"></section>
               </Route>
-{/*               <ProtectedRoute to="./formulario2">
+              {/*               <ProtectedRoute to="./formulario2">
                 <section className="container">
                   <div>Cusos de: {user?.name}</div>
                   <Link to="/formulario">Formulario</Link>
