@@ -55,6 +55,7 @@ export function AddTodo({ addTodo }) {
   const [content, setContent] = useState("");
   const [content2, setContent2] = useState("");
   const [usuario, contentus] = useState("");
+  console.log.apply(usuario);
   /////////////////////////////////////////////////////////////
   const [errorMessage, setErrorMessage] = useState("");
   const { user, setUser } =
@@ -104,7 +105,7 @@ export function AddTodo({ addTodo }) {
         });
       }
     });
-  }, []);
+  }, /* [] */);
 
   useEffect(() => {
     console.log(

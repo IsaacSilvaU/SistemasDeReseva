@@ -3,7 +3,6 @@ import "./index.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Inicio } from "./components/inicio";
 import { Login } from "./components/login";
-import { ListaDatos } from "./components/ListaDatos";
 import { Formulario } from "./components/formulario";
 import {
   Box,
@@ -49,7 +48,7 @@ function App( user, ProfileImage ) {
       </Box>
       <Switch>
         <Route path={"/inicio"}>
-          <App />
+          <Inicio />
         </Route>
         <Route path="/login">
           <Login />
@@ -58,7 +57,7 @@ function App( user, ProfileImage ) {
           <Formulario />
         </Route>
         <Route path="/">
-          <App />
+          <Inicio />
         </Route>
       </Switch>
     </Router>
