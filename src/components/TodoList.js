@@ -9,6 +9,14 @@ import {
 } from "@chakra-ui/layout";
 import { IconButton } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+} from "react-router-dom";
+import { Formulario } from "./formulario";
 
 export function TodoList({ todos, deleteTodo }) {
   if (!todos.length) {
@@ -39,6 +47,10 @@ export function TodoList({ todos, deleteTodo }) {
           />
         </HStack>
       ))}
+      <Link to="/formulario" />
+      <Route path="/formulario">
+        <Formulario />
+      </Route>
     </VStack>
   );
 }

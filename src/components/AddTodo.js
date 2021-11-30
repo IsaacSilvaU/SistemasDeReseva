@@ -12,13 +12,14 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from "react-router-dom";
 // Import the functions you need from the SDKs you ne
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useEffect } from "react";
 import { useUser } from "../providers/UserProvider";
+import { Formulario } from "./formulario";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
@@ -37,7 +38,7 @@ export function AddTodo({ addTodo }) {
         duration: 1000,
         isClosable: true,
       });
-      return;
+      return
     }
 
     const todo = {
@@ -93,19 +94,21 @@ export function AddTodo({ addTodo }) {
       });
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged(() => {
-      /* onAuthStateChanged permite ver si el usuario esta autentificado */
-      const user = auth.currentUser;
+  useEffect(
+    () => {
+      auth.onAuthStateChanged(() => {
+        /* onAuthStateChanged permite ver si el usuario esta autentificado */
+        const user = auth.currentUser;
 
-      if (user) {
-        setUser({
-          name: user.displayName,
-          profileImage: user.photoURL,
-        });
-      }
-    });
-  }, /* [] */);
+        if (user) {
+          setUser({
+            name: user.displayName,
+            profileImage: user.photoURL,
+          });
+        }
+      });
+    } /* [] */
+  );
 
   useEffect(() => {
     console.log(
@@ -113,6 +116,10 @@ export function AddTodo({ addTodo }) {
     ); /* Usamos el user para obtener la info del usuario */
   }, [user]);
   /////////////////////////////////////////////////
+  const formulario = {
+    pathname: "/formulario",
+    state: { fromDashboard: true },
+  };
 
   return (
     <Router>
@@ -161,14 +168,16 @@ export function AddTodo({ addTodo }) {
                       type="submit"
                     >
                       Iniciar sesión con Google
-                      <a href="/formulario"></a>
+                      {/* <a href="/formulario"></a> */}
                     </Button>
                     {errorMessage && (
                       <div className="error">{errorMessage}</div>
                     )}
                   </div>
                   <Button colorScheme="blue" px="2" type="submit">
-                    Iniciar Sesión
+                    <Link to="/formulario">
+                      Iniciar Sesión
+                    </Link>
                   </Button>
                 </VStack>
               </FormControl>
@@ -177,7 +186,7 @@ export function AddTodo({ addTodo }) {
               <Route patch="/">
                 <section className="container"></section>
               </Route>
-              {/*               <ProtectedRoute to="./formulario2">
+              {/*               <ProtectedRoute to="./formulario">
                 <section className="container">
                   <div>Cusos de: {user?.name}</div>
                   <Link to="/formulario">Formulario</Link>
