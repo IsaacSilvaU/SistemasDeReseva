@@ -47,10 +47,6 @@ export function TodoList({ todos, deleteTodo }) {
           />
         </HStack>
       ))}
-      <Link to="/formulario" />
-      <Route path="/formulario">
-        <Formulario />
-      </Route>
     </VStack>
   );
 }

@@ -5,6 +5,8 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
+//import Listado from "./components/listado";
+
 export function Inicio() {
   return (
     <Box p={4}>
@@ -14,11 +16,8 @@ export function Inicio() {
         </Heading>
       </Center>
       <Box boxSize="sm" width="40vw" padding-left="100vw">
-        <Image
-          justifyContent="Center"
-          src="./ada2.png"
-          alt="Logo Adad Suite"
-        />
+        <Image justifyContent="Center" src="./ada2.png" alt="Logo Adad Suite" />
+        {/* <Listado /> */}
       </Box>
     </Box>
   );

@@ -12,7 +12,13 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+} from "react-router-dom";
 // Import the functions you need from the SDKs you ne
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
@@ -38,7 +44,7 @@ export function AddTodo({ addTodo }) {
         duration: 1000,
         isClosable: true,
       });
-      return
+      return;
     }
 
     const todo = {
@@ -168,16 +174,18 @@ export function AddTodo({ addTodo }) {
                       type="submit"
                     >
                       Iniciar sesión con Google
-                      {/* <a href="/formulario"></a> */}
                     </Button>
                     {errorMessage && (
                       <div className="error">{errorMessage}</div>
                     )}
                   </div>
-                  <Button colorScheme="blue" px="2" type="submit">
-                    <Link to="/formulario">
-                      Iniciar Sesión
-                    </Link>
+                  <Button
+                    colorScheme="blue"
+                    px="2"
+                    type="submit"
+                    onClick={formulario}
+                  >
+                    <Link to="/formulario">Iniciar Sesión</Link> {/* No funciona del todo bien */}
                   </Button>
                 </VStack>
               </FormControl>
